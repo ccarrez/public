@@ -66,3 +66,14 @@ pre code {
 .language-js .token.function {
     color: #6f42c1; /* Purple color for functions */
 }
+
+
+
+.toggleDiv {
+    display: none;
+}
+.title {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    user-select: none;
+}

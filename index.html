@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma page perso</title>
     <link rel="stylesheet" href="style.css"> 
+    <script>
+        document.querySelectorAll('.toggleDiv').forEach(function(div) {
+            div.addEventListener('click', function() {
+                if (div.style.display === 'none') {
+                    div.style.display = 'block';
+                } else {
+                    div.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -25,29 +36,54 @@
 
         <p><img class="vignette" src="media/informatique.jpg" /></p>
 
-        <h1>AI</h1>
-        <h2>Installations</h2>
-        <h3>Conda environment</h3>
-        <p>Download from: <a href="https://docs.anaconda.com/miniconda/">https://docs.anaconda.com/miniconda/</a></p>
-        <code>./Miniconda3-latest-Linux-x86_64.sh</code>
-        <h3>Python autotrain environment</h3>
-        <p><a href="https://github.com/huggingface/autotrain-advanced">https://github.com/huggingface/autotrain-advanced</a></p>
-        <pre>conda create -n autotrain python=3.10
-        conda activate autotrain
-        pip install autotrain-advanced
-        conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
-        conda install -c "nvidia/label/cuda-12.1.0" cuda-nvcc</pre>
-
-        <h1>Docker</h1>
-        <h2>Installations</h2>
-        <h3>Ajout des dépôts</h3>
-        <pre>. /etc/os-release
-        curl -4fsSL https://download.docker.com/linux/${ID}/gpg | sudo tee /etc/apt/trusted.gpg.d/docker.asc
-        echo "deb [arch=amd64] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list
-        sudo apt update</pre>
-        <h3>Installation</h3>
-        <pre>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin</pre>
+        <div class="section">
+            <h1 class="title"><span class="icon">►</span> AI</h1>
+            <div class="toggleDiv">
+                <h2>Installations</h2>
+                <h3>Conda environment</h3>
+                <p>Download from: <a href="https://docs.anaconda.com/miniconda/">https://docs.anaconda.com/miniconda/</a></p>
+                <code>./Miniconda3-latest-Linux-x86_64.sh</code>
+                <h3>Python autotrain environment</h3>
+                <p><a href="https://github.com/huggingface/autotrain-advanced">https://github.com/huggingface/autotrain-advanced</a></p>
+                <pre>conda create -n autotrain python=3.10
+                conda activate autotrain
+                pip install autotrain-advanced
+                conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+                conda install -c "nvidia/label/cuda-12.1.0" cuda-nvcc</pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h1 class="title"><span class="icon">►</span> Docker</h1>
+            <div class="toggleDiv">
+                <h2>Installations</h2>
+                <h3>Ajout des dépôts</h3>
+                <pre>. /etc/os-release
+                curl -4fsSL https://download.docker.com/linux/${ID}/gpg | sudo tee /etc/apt/trusted.gpg.d/docker.asc
+                echo "deb [arch=amd64] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list
+                sudo apt update</pre>
+                <h3>Installation</h3>
+                <pre>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin</pre>
+            </div>
+        </div>
+        
 
     </div>
+
+    <script>
+        document.querySelectorAll('.title').forEach(function(title) {
+            title.addEventListener('click', function() {
+                var toggleDiv = title.nextElementSibling;
+                if (toggleDiv.style.display === 'none') {
+                    toggleDiv.style.display = 'block';
+                    title.querySelector('.icon').textContent = '▼';
+                } else {
+                    toggleDiv.style.display = 'none';
+                    title.querySelector('.icon').textContent = '►';
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
