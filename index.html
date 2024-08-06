@@ -74,7 +74,7 @@
         document.querySelectorAll('.title').forEach(function(title) {
             title.addEventListener('click', function() {
                 var toggleDiv = title.nextElementSibling;
-                if (toggleDiv.style.display === 'none') {
+                if (toggleDiv.style.display === 'none' || toggleDiv.style.display === '') {
                     toggleDiv.style.display = 'block';
                     title.querySelector('.icon').textContent = '▼';
                 } else {
