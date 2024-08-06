@@ -26,3 +26,6 @@ pre {
 a {
     color: #1a73e8;
 }
+.vignette {
+    max-width: 300px;
+}
