@@ -41,6 +41,8 @@
             <div class="toggleDiv">
                 <h2>WSL - Windows Subsystem for Linux</h2>
                 <img src="media/wsl_neofetch.png" alt="WSL neofetch" />
+                <h2>Générer un mot de passe</h2>
+                <pre>openssl rand -base64 36</pre>
             </div>
         </div>
 
@@ -72,11 +74,11 @@ echo "deb [arch=amd64] https://download.docker.com/linux/${ID} ${VERSION_CODENAM
 sudo apt update</pre>
                 <h3>Installation</h3>
                 <pre>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin</pre>
-            </div>
-            <h2>Exécuter Docker sans être root</h2>
-            <pre>sudo groupadd docker
+                <h2>Exécuter Docker sans être root</h2>
+                <pre>sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker</pre>
+            </div>
         </div>
         
 
