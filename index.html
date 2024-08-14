@@ -49,11 +49,19 @@
         <div class="section">
             <h1 class="title"><span class="icon">►</span> AI</h1>
             <div class="toggleDiv">
-                <h2>Installations</h2>
-                <h3>Conda environment</h3>
+                <h2>Utilisation d'un LLM en local</h2>
+                <p>Installer <a href="https://ollama.com/download/linux" target="_blank">Ollama</a> depuis la machine WSL,</p>
+                <pre>curl -fsSL https://ollama.com/install.sh | sh</pre>
+                <p>Installer un modèle LLM</p>
+                <pre>ollama run llama3.1</pre>
+                <p>Déployer une interface web via Docker</p>
+                <pre>sudo docker run -d -p --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main</pre>
+                <img src="media/webui_llama3.1_simplePrompt.png" alt="Web UI local" />
+                <h2>Entrainement</h2>
+                <h3>Intallation : Conda environment</h3>
                 <p>Download from: <a href="https://docs.anaconda.com/miniconda/">https://docs.anaconda.com/miniconda/</a></p>
                 <code>./Miniconda3-latest-Linux-x86_64.sh</code>
-                <h3>Python autotrain environment</h3>
+                <h3>Installation : Python autotrain environment</h3>
                 <p><a href="https://github.com/huggingface/autotrain-advanced">https://github.com/huggingface/autotrain-advanced</a></p>
                 <pre>conda create -n autotrain python=3.10
 conda activate autotrain
@@ -78,6 +86,12 @@ sudo apt update</pre>
                 <pre>sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker</pre>
+                <h2>Exécuter le service Docker avec systemctl</h2>
+                <p><u>Pré-requis WSL</u></p>
+                <pre>wsl --update</pre>
+                <p>Activer et démarrer le service</p>
+                <pre>sudo systemctl enable docker
+sudo systemctl start docker</pre>
                 <h2>Docker compose : exemple Mirth + Postgres</h2>
                 <pre># Mirth+Postgres
 services:
