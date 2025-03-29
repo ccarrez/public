@@ -122,6 +122,8 @@ newgrp docker</pre>
                 <p>Activer et démarrer le service</p>
                 <pre>sudo systemctl enable docker
 sudo systemctl start docker</pre>
+                <h2>Créer un réseau</h2>
+                <pre>docker network create --driver bridge my-network</pre>
                 <h2>Docker compose : exemple Mirth + Postgres</h2>
                 <pre># Mirth+Postgres
 services:
@@ -129,6 +131,8 @@ services:
     image: nextgenhealthcare/connect:4.5.0
     container_name: mirth
     platform: linux/amd64
+    networks:
+        - my-network
     environment:
         - DATABASE=postgres
         - DATABASE_URL=jdbc:postgresql://postgres:5432/mirthdb
@@ -148,6 +152,8 @@ services:
     postgres:
     image: postgres:14-alpine
     container_name: postgres
+    networks:
+      - my-network
     volumes:
         - ~/mirth/postgres:/var/lib/postgresql/data
     environment:
@@ -156,7 +162,11 @@ services:
         - POSTGRES_DB=mirthdb
     ports:
         - 5432:5432
-    restart: always</pre>
+    restart: always
+networks:
+    my-network:
+        driver: bridge
+        name: my-network  # Explicit name for easier management</pre>
             </div>
         </div>
         
