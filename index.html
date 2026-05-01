@@ -184,6 +184,23 @@ networks:
         name: my-network  # Explicit name for easier management</pre>
             </div>
         </div>
+
+                <div class="section">
+            <h1 class="title"><span class="icon">►</span>UFW, firewall</h1>
+            <div class="toggleDiv">
+                <h2>Politique par défaut</h2>
+                <pre>sudo ufw default deny incoming
+sudo ufw default allow outgoing</pre>
+                <h2>Ouvrir les ports essentiels</h2>
+                <pre>sudo ufw allow ssh          # Port 22
+sudo ufw allow 80/tcp       # HTTP (pour Caddy / Let's Encrypt)
+sudo ufw allow 443/tcp      # HTTPS
+sudo ufw allow 443/udp      # HTTPS (pour le support de HTTP/3)</pre>
+                <h2>Activer</h2>
+                <pre>sudo ufw enable
+sudo ufw status</pre>
+            </div>
+        </div>
         
 
     </div>
